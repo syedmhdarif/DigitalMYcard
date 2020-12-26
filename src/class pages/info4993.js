@@ -9,7 +9,7 @@ import Record from './record';
 
 const Tab = createBottomTabNavigator();
 
-const info4993=()=> {
+const Info4993=()=> {
     return (
       
         <Tab.Navigator initialRouteName='Chapter'
@@ -43,7 +43,7 @@ const info4993=()=> {
         
     )
 }
-export default info4993;
+export default Info4993;
 
 
 

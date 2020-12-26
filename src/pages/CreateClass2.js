@@ -231,14 +231,16 @@ export default class CreateClass2 extends Component{
     //     }
     //   }
 
+    
+
     saveData = () =>{
-        if(this.state.classcode &&  this.state.classname  && this.state.section && this.state.matricnum ){
+        if(this.state.classcode &&  this.state.classname  && this.state.section ){
           if(isNaN(this.state.classcode)){
             Alert.alert('Status','Invalid Class Code!');
           }
           
            else{
-             addClass(this.state.classcode, this.state.classname, this.state.section, this.state.matricnum);
+             addClass(this.state.classcode, this.state.classname, this.state.section);
              Alert.alert('Status','Inserted!');
            }
         } else{
@@ -287,7 +289,7 @@ export default class CreateClass2 extends Component{
                 
                 />
 
-            <TextInput style={styles.inputBox} 
+            {/* <TextInput style={styles.inputBox} 
                 placeholderTextColor="#595959"              
                 
                 underlineColorAndroid='rgba(0,0,0,0)'
@@ -295,7 +297,7 @@ export default class CreateClass2 extends Component{
                 color='black'
                 onChangeText={this.setMatricnum}
                 
-                />
+                /> */}
             <>
                 <DropDownPicker
                     items={[

@@ -26,7 +26,7 @@ export default class JoinClass2 extends Component{
             sem: [],
             classcode : null,
             name : null,
-            matricnum : null,
+            // matricnum : null,
             smatricnum : null
         };
     }
@@ -66,9 +66,9 @@ export default class JoinClass2 extends Component{
         this.setState({ classcode: value });
       }
 
-    setMatricnum = (value) =>{
-        this.setState({ matricnum: value });
-      }
+    // setMatricnum = (value) =>{
+    //     this.setState({ matricnum: value });
+    //   }
 
     setSMatricnum = (value) =>{
         this.setState({ smatricnum: value });
@@ -82,12 +82,12 @@ export default class JoinClass2 extends Component{
 
 
     saveData = () =>{
-        if(this.state.classcode && this.state.matricnum && this.state.smatricnum && this.state.name  ){
+        if(this.state.classcode  && this.state.smatricnum && this.state.name  ){
           if(isNaN(this.state.smatricnum)){
             Alert.alert('Status','Invalid matric number!');
           }
            else{
-             addClassStudent(this.state.classcode, this.state.matricnum,this.state.smatricnum, this.state.name);
+             addClassStudent(this.state.classcode,this.state.smatricnum, this.state.name);
              Alert.alert('Status','Inserted!');
            }
         } else{
@@ -134,14 +134,14 @@ export default class JoinClass2 extends Component{
                 
                 />
 
-            <TextInput style={{borderBottomWidth:0.4, width:wp('90%'), paddingHorizontal:10 }} 
+            {/* <TextInput style={{borderBottomWidth:0.4, width:wp('90%'), paddingHorizontal:10 }} 
                 placeholderTextColor="#595959"              
                 onChangeText={this.setMatricnum}
                 underlineColorAndroid='rgba(0,0,0,0)'
                 placeholder="matric number" 
-                color='black'
-                
-                />
+                color='black' */}
+{/*                 
+                /> */}
              <TextInput style={{borderBottomWidth:0.4, width:wp('90%'), paddingHorizontal:10 }} 
                 placeholderTextColor="#595959"              
                 onChangeText={this.setSMatricnum}

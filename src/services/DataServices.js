@@ -1,8 +1,12 @@
 import { db } from '../config/db';
 import { Actions } from 'react-native-router-flux';
+import auth from '@react-native-firebase/auth';
+import * as firebase from 'firebase';
 
-export const addClass =  (classcode,classname ,  section, matricnum) => {
-    db.ref('/Students/'+ matricnum + '/Class').child(classcode).set({
+var users = auth().currentUser;
+
+export const addClass =  (classcode,classname ,  section,) => {
+    db.ref('/Students/'+ users.uid + '/Class').child(classcode).set({
         classcode: classcode,
         classname: classname,
         section: section,
@@ -14,7 +18,7 @@ export const addClass =  (classcode,classname ,  section, matricnum) => {
     }).catch((error) => {
         console.log(error);
     });
-    
+
 }
 
 // export const addClass = (Id, classcode, classname, section) => {
@@ -45,8 +49,8 @@ export const addClass =  (classcode,classname ,  section, matricnum) => {
 //     });
 //   };
 
-export const addClassStudent =  (classcode, matricnum, smatricnum, name, ) => {
-    db.ref('/Students/' + matricnum + '/Class/' + classcode + '/studentlist').child(smatricnum).set({
+export const addClassStudent =  (classcode, smatricnum, name, ) => {
+    db.ref('/Students/' + user.uid + '/Class/' + classcode + '/studentlist').child(smatricnum).set({
         smatricnum: smatricnum,
         name : name,
         

@@ -32,9 +32,10 @@ import Ewallet from './src/pages/Ewallet';
 import LoginPage from './src/pages/LoginPage';
 import Loading from './src/pages/Loading';
 import MyClass from './src/pages/MyClass';
+import MyClass2 from './src/pages/MyClass2';
 import CreateClass from './src/pages/CreateClass';
 import JoinClass from './src/pages/JoinClass';
-import info4993 from './src/class pages/info4993';
+import info4993 from './src/class pages/Info4993';
 import Chapter from './src/class pages/chapter';
 import Student from './src/class pages/student';
 import Record from './src/class pages/record';
@@ -54,7 +55,7 @@ import Transfer from './src/wallet/Transfer';
 import Reload1 from './src/wallet/Reload1';
 import StudentView from './src/student/StudentView';
 // import DataServices from './src/services/DataServices';
-// import StudentList from './src/components/StudentList';
+import StudentList from './src/components/StudentList';
 import ListScreen from './src/pages/ListScreen';
 
 const Stack = createStackNavigator();
@@ -101,7 +102,9 @@ function App() {
         {/* <Stack.Screen name="DataServices" component={DataServices} />
         <Stack.Screen name="StudentList" component={StudentList} />
         <Stack.Screen name="ListScreen" component={ListScreen} /> */}
-        <Stack.Screen name="ListScreen" component={ListScreen} />
+        
+        <Stack.Screen name="StudentList" component={StudentList} />
+        <Stack.Screen name="MyClass2" component={MyClass2} />
       </Stack.Navigator>
     </NavigationContainer>
   
@@ -126,6 +129,27 @@ const styles = StyleSheet.create({
   
 });
 
+
+
+//CONVO APP
+// import React, { Fragment } from "react";
+
+// import NavContainer from "./srcv/navigation";
+// import Loader from "./srcv/component/loader";
+// import { StoreProvider } from "./srcv/context/store";
+// import { StatusBar } from "react-native";
+
+// console.disableYellowBox = true;
+
+// export default () => {
+//   return (
+//     <StoreProvider>
+//       <StatusBar barStyle="light-content" />
+//       <NavContainer />
+//       <Loader />
+//     </StoreProvider>
+//   );
+// };
 
 
 
@@ -250,4 +274,3 @@ const styles = StyleSheet.create({
 // }
 
 // export default App;
-

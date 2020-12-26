@@ -18,6 +18,10 @@ target 'DigitalMYcard' do
 
   pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
 
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
   target 'DigitalMYcardTests' do
     inherit! :complete
     # Pods for testing

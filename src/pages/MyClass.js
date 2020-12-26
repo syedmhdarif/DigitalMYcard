@@ -4,6 +4,8 @@ import auth from '@react-native-firebase/auth';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import MyClass2 from './MyClass2';
+
 function MyClass ({navigation}){
     
         return(
@@ -14,71 +16,7 @@ function MyClass ({navigation}){
                 <Text style={{fontSize:20, fontWeight:'bold', color:'#ffffff', marginHorizontal:15}}>Digital Matric</Text>
             </TouchableOpacity>
                 <ScrollView >
-            <View style={styles.classtext}>
-            <View style={{marginBottom:10, marginTop:10,}}>
-                <Text style={{fontWeight:'300', fontSize:25, color:'#595959'}}>My Class</Text>
-            </View>
-                <TouchableOpacity 
-                    onPress={() => navigation.navigate('info4993')} title="info4993">
-                    <Text style={styles.textedit}>
-                        INFO 4993 - SEMESTER 2 2019/2020
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => navigation.navigate('StudentView')} title="StudentView">
-                    <Text style={styles.textedit}>
-                        INFO 4024 - SEMESTER 2 2019/2020
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => navigation.navigate('info4993')} title="info4993">
-                    <Text style={styles.textedit}>
-                        INFO 4993 - SEMESTER 2 2019/2020
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => navigation.navigate('Chapter')} title="info4993">
-                    <Text style={styles.textedit}>
-                        INFO 4024 - SEMESTER 2 2019/2020
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => navigation.navigate('info4993')} title="info4993">
-                    <Text style={styles.textedit}>
-                        INFO 4993 - SEMESTER 2 2019/2020
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() =>navigation.navigate('info4993')} title="info4993">
-                    <Text style={styles.textedit}>
-                        INFO 4993 - SEMESTER 2 2019/2020
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => navigation.navigate('info4993')} title="info4993">
-                    <Text style={styles.textedit}>
-                        INFO 4993 - SEMESTER 2 2019/2020
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => navigation.navigate('info4993')} title="info4993">
-                    <Text style={styles.textedit}>
-                        INFO 4993 - SEMESTER 2 2019/2020
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => navigation.navigate('info4993')} title="info4993">
-                    <Text style={styles.textedit}>
-                        INFO 4993 - SEMESTER 2 2019/2020
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => navigation.navigate('info4993')} title="info4993">
-                    <Text style={styles.textedit}>
-                        INFO 4993 - SEMESTER 2 2019/2020
-                    </Text>
-                </TouchableOpacity>
-                </View>
+                    <MyClass2/>
                 </ScrollView>
 
                 
@@ -131,13 +69,11 @@ const styles = StyleSheet.create({
 
 
 
-// Mureed
 // import React, { Component } from 'react';
 // import { TextInput, View, ScrollView, Text, StyleSheet, TouchableOpacity,color} from 'react-native';
 // import auth from '@react-native-firebase/auth';
 // import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 // import Icon from 'react-native-vector-icons/Ionicons';
-// import ListScreen from './ListScreen';
 
 // function MyClass ({navigation}){
     
@@ -148,12 +84,73 @@ const styles = StyleSheet.create({
 //             <Icon name="reorder-four-outline" color={'#ffffff'} size={20} />
 //                 <Text style={{fontSize:20, fontWeight:'bold', color:'#ffffff', marginHorizontal:15}}>Digital Matric</Text>
 //             </TouchableOpacity>
-            
-            
-                
-//                 <ListScreen/>
-            
-           
+//                 <ScrollView >
+//             <View style={styles.classtext}>
+//             <View style={{marginBottom:10, marginTop:10,}}>
+//                 <Text style={{fontWeight:'300', fontSize:25, color:'#595959'}}>My Class</Text>
+//             </View>
+//                 <TouchableOpacity 
+//                     onPress={() => navigation.navigate('info4993')} title="info4993">
+//                     <Text style={styles.textedit}>
+//                         INFO 4993 - SEMESTER 2 2019/2020
+//                     </Text>
+//                 </TouchableOpacity>
+//                 <TouchableOpacity 
+//                     onPress={() => navigation.navigate('StudentView')} title="StudentView">
+//                     <Text style={styles.textedit}>
+//                         INFO 4024 - SEMESTER 2 2019/2020
+//                     </Text>
+//                 </TouchableOpacity>
+//                 <TouchableOpacity 
+//                     onPress={() => navigation.navigate('info4993')} title="info4993">
+//                     <Text style={styles.textedit}>
+//                         INFO 4993 - SEMESTER 2 2019/2020
+//                     </Text>
+//                 </TouchableOpacity>
+//                 <TouchableOpacity 
+//                     onPress={() => navigation.navigate('Chapter')} title="info4993">
+//                     <Text style={styles.textedit}>
+//                         INFO 4024 - SEMESTER 2 2019/2020
+//                     </Text>
+//                 </TouchableOpacity>
+//                 <TouchableOpacity 
+//                     onPress={() => navigation.navigate('info4993')} title="info4993">
+//                     <Text style={styles.textedit}>
+//                         INFO 4993 - SEMESTER 2 2019/2020
+//                     </Text>
+//                 </TouchableOpacity>
+//                 <TouchableOpacity 
+//                     onPress={() =>navigation.navigate('info4993')} title="info4993">
+//                     <Text style={styles.textedit}>
+//                         INFO 4993 - SEMESTER 2 2019/2020
+//                     </Text>
+//                 </TouchableOpacity>
+//                 <TouchableOpacity 
+//                     onPress={() => navigation.navigate('info4993')} title="info4993">
+//                     <Text style={styles.textedit}>
+//                         INFO 4993 - SEMESTER 2 2019/2020
+//                     </Text>
+//                 </TouchableOpacity>
+//                 <TouchableOpacity 
+//                     onPress={() => navigation.navigate('info4993')} title="info4993">
+//                     <Text style={styles.textedit}>
+//                         INFO 4993 - SEMESTER 2 2019/2020
+//                     </Text>
+//                 </TouchableOpacity>
+//                 <TouchableOpacity 
+//                     onPress={() => navigation.navigate('info4993')} title="info4993">
+//                     <Text style={styles.textedit}>
+//                         INFO 4993 - SEMESTER 2 2019/2020
+//                     </Text>
+//                 </TouchableOpacity>
+//                 <TouchableOpacity 
+//                     onPress={() => navigation.navigate('info4993')} title="info4993">
+//                     <Text style={styles.textedit}>
+//                         INFO 4993 - SEMESTER 2 2019/2020
+//                     </Text>
+//                 </TouchableOpacity>
+//                 </View>
+//                 </ScrollView>
 
                 
                 
@@ -199,6 +196,5 @@ const styles = StyleSheet.create({
 //       }
      
 // });
-
 
 

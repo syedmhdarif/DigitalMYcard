@@ -3,8 +3,14 @@ import { View, Text, StyleSheet, Button, Image, TouchableOpacity, ScrollView, co
 import auth from '@react-native-firebase/auth';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp, marginHorizontal as mh} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import * as firebase from 'firebase';
+
+
+var user = auth().currentUser;
 
 function IDcard2({navigation}) {
+
+ 
   
     return (
       <View style={{flex:1,}}>
@@ -28,12 +34,13 @@ function IDcard2({navigation}) {
                 style={{ borderRadius:20, marginTop:100,width:wp('37%'), height:hp('23%')}}
                 source={require('../images/syed.jpg')}/>
             <View style={styles.textview}>
-            <Text style={styles.textedit}>SYED ARIF</Text>
+            <Text style={styles.textedit}>SYED ARIF{user.uid}</Text>
+          
             <Text style={styles.textedit}>1718247</Text>
             <Text style={styles.textedit}>BIT</Text></View>
 
             <Image                 
-                style={{borderRadius:8, marginTop:'8%',width:wp('25%'), height:hp('15%')}}
+                style={{borderRadius:8, marginTop:'4%',width:wp('25%'), height:hp('15%')}}
                 source={require('../images/QR.png')}/>
                 <Text style={styles.textedit2}>17.07.2020  03.29pm</Text>
          

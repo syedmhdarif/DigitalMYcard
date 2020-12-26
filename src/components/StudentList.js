@@ -1,35 +1,56 @@
-// import React, { Component } from 'react';
-// import { Text, ListItem, Left, Right, Icon } from 'native-base';
-// import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { Text, ListItem, Left, Right, Icon, View } from 'native-base';
+import PropTypes from 'prop-types';
 
-// export default class StudentList extends Component {
+export default class StudentList extends Component {
 
-//   static propTypes = {
-//       students: PropTypes.array.isRequired
-//   };
+  static propTypes = {
+      Students: PropTypes.array.isRequired
+  };
 
-//    onPress = (matricno) => {
-//     this.props.onPress(matricno);
-//   }
 
-//   onLongPress = (matricno) => {
-//     this.props.onLongPress(matricno);
-//   }
 
-//   render() {
+  render() {
+    return(
+      this.props.Students.map((data, index) => {
+        return(
+          <ListItem key={index} >
+
+          <Left>
+          <View>
+            <Text style={{fontSize:17, color:'#595959'}}>{data.classname}</Text>
+           
+          </View>
+          </Left>
+
+          <Left>
+          <View>
+            <Text style={{fontSize:18, color:'#595959'}}>{data.classcode}</Text>
+          </View>
+          </Left>
+          
+          <Right>
+          <Icon name="arrow-forward" />
+          </Right>
+
+          </ListItem>
+        )
+      })
+    )
+  }
+}
+
+
+
+// import { View } from "native-base";
+// import {Text} from 'react-native';
+// import React, { Component } from "react";
+
+// export default class StudentList extends Component{
+//   render(){
 //     return(
-//       this.props.students.map((data, index) => {
-//         return(
-//           <ListItem key={index} onPress={() => this.onPress(data.matricno)} onLongPress={() => this.onLongPress(data.matricno)}>
-//           <Left>
-//           <Text>{data.name}</Text>
-//           </Left>
-//           <Right>
-//           <Icon name="arrow-forward" />
-//           </Right>
-//           </ListItem>
-//         )
-//       })
-//     )
+//       <View><Text>HAIII</Text></View>
+
+//     );
 //   }
 // }
