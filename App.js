@@ -57,6 +57,9 @@ import StudentView from './src/student/StudentView';
 // import DataServices from './src/services/DataServices';
 import StudentList from './src/components/StudentList';
 import ListScreen from './src/pages/ListScreen';
+import Matric from './src/pages/Matric';
+import MatricCard from './src/pages/MatricCard';
+
 
 const Stack = createStackNavigator();
 
@@ -105,6 +108,8 @@ function App() {
         
         <Stack.Screen name="StudentList" component={StudentList} />
         <Stack.Screen name="MyClass2" component={MyClass2} />
+        <Stack.Screen name="Matric" component={Matric} />
+        <Stack.Screen name="MatricCard" component={MatricCard} />
       </Stack.Navigator>
     </NavigationContainer>
   

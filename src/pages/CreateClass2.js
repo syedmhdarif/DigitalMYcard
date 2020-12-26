@@ -235,8 +235,8 @@ export default class CreateClass2 extends Component{
 
     saveData = () =>{
         if(this.state.classcode &&  this.state.classname  && this.state.section ){
-          if(isNaN(this.state.classcode)){
-            Alert.alert('Status','Invalid Class Code!');
+          if(isNaN(this.state.section)){
+            Alert.alert('Status','Invalid section!');
           }
           
            else{
