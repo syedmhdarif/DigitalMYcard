@@ -35,7 +35,7 @@ import MyClass from './src/pages/MyClass';
 import MyClass2 from './src/pages/MyClass2';
 import CreateClass from './src/pages/CreateClass';
 import JoinClass from './src/pages/JoinClass';
-import info4993 from './src/class pages/Info4993';
+import Info4993 from './src/class pages/Info4993';
 import Chapter from './src/class pages/chapter';
 import Student from './src/class pages/student';
 import Record from './src/class pages/record';
@@ -59,6 +59,8 @@ import StudentList from './src/components/StudentList';
 import ListScreen from './src/pages/ListScreen';
 import Matric from './src/pages/Matric';
 import MatricCard from './src/pages/MatricCard';
+import Newdataservice from './src/services/Newdataservice';
+import ClassTest from './src/pages/ClassTest';
 
 
 const Stack = createStackNavigator();
@@ -85,7 +87,7 @@ function App() {
         <Stack.Screen name="MyClass" component={MyClass} />
         <Stack.Screen name="CreateClass" component={CreateClass} />
         <Stack.Screen name="JoinClass" component={JoinClass} />
-        <Stack.Screen name="info4993" component={info4993} />
+        <Stack.Screen name="Info4993" component={Info4993} />
         <Stack.Screen name="Chapter" component={Chapter} />
         <Stack.Screen name="Student" component={Student} />
         <Stack.Screen name="Record" component={Record} />
@@ -110,6 +112,8 @@ function App() {
         <Stack.Screen name="MyClass2" component={MyClass2} />
         <Stack.Screen name="Matric" component={Matric} />
         <Stack.Screen name="MatricCard" component={MatricCard} />
+        <Stack.Screen name="Newdataservice" component={Newdataservice} />
+        <Stack.Screen name="ClassTest" component={ClassTest} />
       </Stack.Navigator>
     </NavigationContainer>
   

@@ -7,7 +7,7 @@ import { db } from '../config/db';
 import * as firebase from 'firebase';
 import auth from '@react-native-firebase/auth';
 import MatricCard from './MatricCard';
-
+ 
 var user = auth().currentUser;
 
 let studentsRef = db.ref('/Students/' + user.uid + '/Profile/');

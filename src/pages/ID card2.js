@@ -151,7 +151,7 @@ import * as firebase from 'firebase';
 import Matric from "./Matric";
 
 
-var user = auth().currentUser;
+
 
 function IDcard2({navigation}) {
 

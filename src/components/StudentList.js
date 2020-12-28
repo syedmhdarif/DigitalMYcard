@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { TextInput, ScrollView,  StyleSheet, TouchableOpacity,color} from 'react-native';
 import { Text, ListItem, Left, Right, Icon, View } from 'native-base';
 import PropTypes from 'prop-types';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 export default class StudentList extends Component {
 
@@ -14,31 +17,68 @@ export default class StudentList extends Component {
     return(
       this.props.Students.map((data, index) => {
         return(
-          <ListItem key={index} >
+          <View key={index} >
 
-          <Left>
-          <View>
-            <Text style={{fontSize:17, color:'#595959'}}>{data.classname}</Text>
-           
-          </View>
-          </Left>
+          <View style={styles.textedit} >
+            <View   style={{flexDirection:'column'}}>
+              <Text style={{fontSize:18, color:'#595959'}}>{data.classname}</Text>
+              <Text style={{fontSize:18, color:'#595959'}}>{data.classcode}</Text>
+            
+            </View>
 
-          <Left>
-          <View>
-            <Text style={{fontSize:18, color:'#595959'}}>{data.classcode}</Text>
+            <Right>
+
+            <Icon color='#595959' name="arrow-forward" />
+            </Right>
+              
+            
           </View>
-          </Left>
+    
           
-          <Right>
-          <Icon name="arrow-forward" />
-          </Right>
 
-          </ListItem>
+          </View>
         )
       })
     )
   }
 }
+
+const styles = StyleSheet.create({
+    classtext:{
+        
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: "#ffffff",
+    },
+    textedit:{ 
+      flexDirection:'row',
+        borderColor:'#595959',
+        borderWidth:1,
+        borderRadius:4,
+        width:wp('95%'),
+        paddingHorizontal:20,
+        paddingVertical:15,
+        marginVertical:5,   
+        fontWeight:'900',
+        color:'#595959', fontSize:18
+    
+      },
+      header:{
+        flexDirection:'row',
+        width:wp('100%'), height:hp('8%'), backgroundColor:'#199591',
+        shadowColor: "black",
+        shadowOffset: {
+          width: 5,
+          height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 5,
+        alignItems:'center',
+        paddingHorizontal:22
+      }
+     
+});
 
 
 

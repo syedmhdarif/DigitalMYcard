@@ -38,7 +38,7 @@ export default class MatricCard extends Component {
 
                 <Image                 
                     style={{ borderRadius:20, marginTop:100,width:wp('37%'), height:hp('23%')}}
-                    source={require('../images/syed.jpg')}/>
+                    source={{uri :data.profileimg}}/>
 
                     <View style={styles.textview}>
                         <Text style={styles.textedit}>{data.fname}</Text>
@@ -48,11 +48,11 @@ export default class MatricCard extends Component {
                     </View>
 
                 <Image                 
-                    style={{borderRadius:8, marginTop:'7%',width:wp('30%'), height:hp('17%')}}
-                    source={require('../images/syedqr.png')}/>
+                    style={{ marginTop:'5%',width:wp('31%'), height:hp('19%')}}
+                    source={{uri :data.qrimage}}/>
                 <Text style={styles.textedit2}>17.07.2020  03.29pm</Text>
          
-                <TouchableOpacity style={{marginVertical:'4%'}} onPress={()=> auth().signOut()} >
+                <TouchableOpacity style={{marginVertical:'2%'}} onPress={()=> auth().signOut()} >
                      <Text style={{color:'black'}} >Logout</Text>
                </TouchableOpacity></ImageBackground>
                </View>
@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
     matric: {
       marginVertical:0,
       alignSelf:'center',
-      width:wp('85%'), 
-      height:hp('90%'), 
+      width:wp('89%'), 
+      height:hp('88%'), 
       elevation:4, 
       alignItems:'center',
       marginBottom:20,

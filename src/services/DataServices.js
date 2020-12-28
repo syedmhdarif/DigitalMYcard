@@ -3,14 +3,35 @@ import { Actions } from 'react-native-router-flux';
 import auth from '@react-native-firebase/auth';
 import * as firebase from 'firebase';
 
-var users = auth().currentUser;
+var user = auth().currentUser;
 
-export const addClass =  (classcode,classname ,  section,) => {
-    db.ref('/Students/'+ users.uid + '/Class').child(classcode).set({
+export const addClass =  (classcode,classname , section,) => {
+    
+    db.ref('/Students/'+ user.uid + '/Class/'+ classcode + '_' + section).set({
+
+
         classcode: classcode,
         classname: classname,
         section: section,
-        studentlist: '',
+        
+        // year : year,
+        // semester : semester ,
+    }).then(() => {
+        console.log('INSERTED !');
+    }).catch((error) => {
+        console.log(error);
+    });
+
+}
+
+
+export const addClassreff =  (classcode ,section, matricnum, fname) => {
+    
+    db.ref('/Classreff/'+ classcode + '_' + section +'/studentlist/').child(matricnum).set({
+
+
+        matricnum:matricnum,
+        fname : '',
         // year : year,
         // semester : semester ,
     }).then(() => {
@@ -49,10 +70,10 @@ export const addClass =  (classcode,classname ,  section,) => {
 //     });
 //   };
 
-export const addClassStudent =  (classcode, smatricnum, name, ) => {
-    db.ref('/Students/' + user.uid + '/Class/' + classcode + '/studentlist').child(smatricnum).set({
+export const addClassStudent =  (classcode, section, smatricnum, name, ) => {
+    db.ref('/Classreff/'+ classcode + '_' + section +'/studentlist/').child(smatricnum).set({
         smatricnum: smatricnum,
-        name : name,
+        fname : '',
         
         // year : year,
         // semester : semester ,
