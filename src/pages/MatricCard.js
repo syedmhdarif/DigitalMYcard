@@ -41,7 +41,7 @@ export default class MatricCard extends Component {
                     source={{uri :data.profileimg}}/>
 
                     <View style={styles.textview}>
-                        <Text style={styles.textedit}>{data.fname}</Text>
+                        <Text style={styles.textedit}>{data.name}</Text>
                     
                         <Text style={styles.textedit}>{data.matricnum}</Text>
                         <Text style={styles.textedit}>{data.course}</Text>
@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
       marginVertical:0,
       alignSelf:'center',
       width:wp('89%'), 
-      height:hp('88%'), 
+      height:hp('88%'),
+    
       elevation:4, 
       alignItems:'center',
       marginBottom:20,

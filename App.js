@@ -15,6 +15,7 @@ import {
   TextInput, 
   
 } from 'react-native';
+import { Router, Scene } from 'react-native-router-flux';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -60,7 +61,8 @@ import ListScreen from './src/pages/ListScreen';
 import Matric from './src/pages/Matric';
 import MatricCard from './src/pages/MatricCard';
 import Newdataservice from './src/services/Newdataservice';
-import ClassTest from './src/pages/ClassTest';
+
+import ClassList from './src/pages/ClassList';
 
 
 const Stack = createStackNavigator();
@@ -113,8 +115,16 @@ function App() {
         <Stack.Screen name="Matric" component={Matric} />
         <Stack.Screen name="MatricCard" component={MatricCard} />
         <Stack.Screen name="Newdataservice" component={Newdataservice} />
-        <Stack.Screen name="ClassTest" component={ClassTest} />
+        <Stack.Screen name="ClassList" component={ClassList} />
       </Stack.Navigator>
+
+      {/* <Router>
+        <Scene key="root">
+          
+          <Scene key="MyClass2" component={MyClass2} left={()=>null} title="Mureed" />
+          <Scene key="Info4993" component={Info4993} left={()=>null} title="Mureed" />
+        </Scene>
+      </Router> */}
     </NavigationContainer>
   
   );

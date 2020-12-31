@@ -1,28 +1,24 @@
-import React, { Component } from 'react';
-import { TextInput, ScrollView,  StyleSheet, TouchableOpacity,color} from 'react-native';
-import { Text, ListItem, Left, Right, Icon, View } from 'native-base';
+import React, { useState, useEffect } from 'react';
+import { TextInput, View, ScrollView, Text, StyleSheet, TouchableOpacity,color} from 'react-native';
+import { Left, Right, Icon } from 'native-base';
 import PropTypes from 'prop-types';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
-export default class StudentList extends Component {
-
-  static propTypes = {
-      Students: PropTypes.array.isRequired
-  };
 
 
 
-  render() {
+export default function Testpage ({Students}){
+
+   const [handleToggle,setHandleToggle] = useState(false);
+
+
+
     return(
-      this.props.Students.map((data, index) => {
-        return(
-          <View key={index} >
-
-          <View style={styles.textedit} >
+        <View style={styles.textedit} >
             <View   style={{flexDirection:'column'}}>
-              <Text style={{fontSize:18, color:'#595959'}}>{data.classname}</Text>
-              <Text style={{fontSize:18, color:'#595959'}}>{data.classcode} - Section {data.section}</Text>
+              <Text style={{fontSize:18, color:'#595959'}}>{Students.classname}</Text>
+              <Text style={{fontSize:18, color:'#595959'}}>{Students.classcode} - Section {Students.section}</Text>
             
             </View>
            
@@ -33,14 +29,10 @@ export default class StudentList extends Component {
               
             
           </View>
-    
-          
+  
+    );
+        
 
-          </View>
-        )
-      })
-    )
-  }
 }
 
 const styles = StyleSheet.create({
@@ -79,18 +71,3 @@ const styles = StyleSheet.create({
       }
      
 });
-
-
-
-// import { View } from "native-base";
-// import {Text} from 'react-native';
-// import React, { Component } from "react";
-
-// export default class StudentList extends Component{
-//   render(){
-//     return(
-//       <View><Text>HAIII</Text></View>
-
-//     );
-//   }
-// }

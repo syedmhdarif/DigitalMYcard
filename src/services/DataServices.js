@@ -5,14 +5,16 @@ import * as firebase from 'firebase';
 
 var user = auth().currentUser;
 
-export const addClass =  (classcode,classname , section,) => {
+
+export const addClass =  (classcode,classname , section, matricnum) => {
     
     db.ref('/Students/'+ user.uid + '/Class/'+ classcode + '_' + section).set({
 
-
+        
         classcode: classcode,
         classname: classname,
         section: section,
+        matricnum:matricnum,
         
         // year : year,
         // semester : semester ,
@@ -25,13 +27,13 @@ export const addClass =  (classcode,classname , section,) => {
 }
 
 
-export const addClassreff =  (classcode ,section, matricnum, fname) => {
+export const addClassreff =  (classcode ,section, matricnum, name) => {
     
     db.ref('/Classreff/'+ classcode + '_' + section +'/studentlist/').child(matricnum).set({
 
 
         matricnum:matricnum,
-        fname : '',
+        name : name,
         // year : year,
         // semester : semester ,
     }).then(() => {
@@ -42,38 +44,13 @@ export const addClassreff =  (classcode ,section, matricnum, fname) => {
 
 }
 
-// export const addClass = (Id, classcode, classname, section) => {
-//     return new Promise(function(resolve, reject) {
-//       let key;
-//       if (Id != null) {
-//         key = Id;
-//       } else {
-//         key = db()
-//           .ref()
-//           .push().key;
-//       }
-//       let dataToSave = {
-//         Id: key,
-//         classcode: classcode,
-//         classname: classname,
-//         section: section,
-//       };
-//       db()
-//         .ref('Students/' + key)
-//         .update(dataToSave)
-//         .then(snapshot => {
-//           resolve(snapshot);
-//         })
-//         .catch(err => {
-//           reject(err);
-//         });
-//     });
-//   };
 
-export const addClassStudent =  (classcode, section, smatricnum, name, ) => {
-    db.ref('/Classreff/'+ classcode + '_' + section +'/studentlist/').child(smatricnum).set({
-        smatricnum: smatricnum,
-        fname : '',
+
+export const addClassStudent =  (classcode, section, name) => {
+    db.ref('/Classreff/'+ classcode + '_' + section +'/Creatordetail/').set({
+        cname: name,
+        creator : user.uid
+        
         
         // year : year,
         // semester : semester ,

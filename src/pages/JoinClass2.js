@@ -7,11 +7,20 @@ import DropDownPicker from 'react-native-dropdown-picker';
 
 import Alertbutton2 from '../class pages/alertbutton2';
 import { addClassreff, addClass } from '../services/DataServices';
+import auth from '@react-native-firebase/auth';
+import { db } from '../config/db'
+
+
+var user = auth().currentUser;
+
+
+let studentsRef = db.ref('/Students/' + user.uid+  '/Profile');
+
 
 
 export default class JoinClass2 extends Component{
     componentDidMount() {
-        loc(this);
+        loc(this); 
       }
       
       componentWillUnMount() {
@@ -21,17 +30,53 @@ export default class JoinClass2 extends Component{
         super(props);
 
         this.state = {
-            country: null,
-            city: null,
-            sem: [],
-            classname : null,
-            classcode : null,
-            name : null,
-            matricnum : null,
+          Students: [],
+        
+          classcode: null,
+          classname: null,
+          section: null,
+          matricnum : null,
+          name : null,
+
+      
            
         };
     }
     
+
+    componentDidMount() {
+    
+      studentsRef.on('value', (snapshot) => {
+        let data = snapshot.val();
+            if(data){
+              let firebaseData = Object.values(data);
+              this.setState({Students: firebaseData},()=>{
+                this.state.Students.map((element) => {
+                  this.setState({
+                    name: element.name,
+                    lname : element.lname,
+                    matricnum: element.matricnum,
+                    
+                   
+                    
+                  });
+                 
+                }); 
+              });
+            }
+       });
+
+  
+
+    }
+  
+    setName = (value) =>{
+      this.setState({ name: value });
+    }
+  
+    setMatricNo = (value) =>{
+      this.setState({ matricnum: value });
+    }
 
     setClassname = (value) =>{
         this.setState({ classname: value });
@@ -53,14 +98,14 @@ export default class JoinClass2 extends Component{
 
 
     saveData = () =>{
-        if(this.state.classcode &&  this.state.classname  && this.state.section && this.state.matricnum ){
+        if(this.state.classcode &&  this.state.classname  && this.state.section && this.state.matricnum && this.state.name){
           if(isNaN(this.state.section)){
             Alert.alert('Status','Invalid section!');
           }
           
            else{
-             addClass(this.state.classcode, this.state.classname, this.state.section, this.state.matricnum);
-             addClassreff(this.state.classcode, this.state.section, this.state.matricnum);
+            addClass(this.state.classcode, this.state.classname, this.state.section, this.state.matricnum);
+            addClassreff(this.state.classcode, this.state.section, this.state.matricnum, this.state.name);
              Alert.alert('Status','Inserted!');
            }
         } else{
@@ -105,15 +150,7 @@ export default class JoinClass2 extends Component{
                 
                 />
 
-            <TextInput style={styles.inputBox} 
-                placeholderTextColor="#595959"              
-                
-                underlineColorAndroid='rgba(0,0,0,0)'
-                placeholder="Matric Number" 
-                color='black'
-                onChangeText={this.setMatricnum}
-                
-                /> 
+            
 
             <TouchableOpacity style={styles.button} onPress={this.saveData}>
                 <Text style={styles.loginbutton}>Join</Text>

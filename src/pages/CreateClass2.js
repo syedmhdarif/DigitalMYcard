@@ -137,9 +137,21 @@ import React, { Component } from 'react';
 import { TextInput, View, ScrollView, Text, StyleSheet, TouchableOpacity, Button, Alert } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { addClass, addClassreff } from '../services/DataServices';
+import { addClass, addClassreff, addClassStudent } from '../services/DataServices';
+
+import { db } from '../config/db';
+import auth from '@react-native-firebase/auth';
 
 import Alertbutton from '../class pages/alertbutton';
+
+var user = auth().currentUser;
+
+
+
+
+
+
+let studentsRef = db.ref('/Students/' + user.uid+  '/Profile');
 
 export default class CreateClass2 extends Component{
 
@@ -148,19 +160,56 @@ export default class CreateClass2 extends Component{
         super(props);
 
         this.state = {
-            country: null,
-            city: null,
-            sem: [],
+          Students: [],
             
             classcode: null,
             classname: null,
             section: null,
             matricnum : null,
+            name : null,
             // year: null ,
             // semester : null,
             
         };
     }
+
+
+    componentDidMount() {
+    
+      studentsRef.on('value', (snapshot) => {
+        let data = snapshot.val();
+            if(data){
+              let firebaseData = Object.values(data);
+              this.setState({Students: firebaseData},()=>{
+                this.state.Students.map((element) => {
+                  this.setState({
+                    name: element.name,
+                    lname : element.lname,
+                    matricnum: element.matricnum,
+                    
+                   
+                    
+                  });
+                 
+                }); 
+              });
+            }
+       });
+    }
+  
+    setName = (value) =>{
+      this.setState({ name: value });
+    }
+  
+    setMatricNo = (value) =>{
+      this.setState({ matricnum: value });
+    }
+
+    // setCreator = (value) =>{
+    //   this.setState({ creator: value });
+    // }
+
+   
     
 
     setClassname = (value) =>{
@@ -179,39 +228,19 @@ export default class CreateClass2 extends Component{
         this.setState({ matricnum: value });
       }
 
-    //   selectYear = (value) => {
-    //     this.setState({ year: value });
-    //   }
-
-    //   selectSemester = (value) => {
-    //     this.setState({ semester: value });
-    //   }
     
-    //   saveData = () =>{
-    //     if(this.state.classname && this.state.classcode && this.state.section && this.state.year && this.state.semester){
-    //       if(isNaN(this.state.classcode)){
-    //         Alert.alert('Status','Invalid Class Code!');
-    //       }
-    //        else{
-    //          addClass(this.state.classname, this.state.classcode, this.state.section, this.state.year, this.state.semester);
-    //          Alert.alert('Status','Inserted!');
-    //        }
-    //     } else{
-    //        Alert.alert('Status','Empty Field(s)!');
-    //     }
-    //   }
-
     
 
     saveData = () =>{
-        if(this.state.classcode &&  this.state.classname  && this.state.section && this.state.matricnum ){
+        if(this.state.classcode &&  this.state.classname  && this.state.section && this.state.matricnum && this.state.name ){
           if(isNaN(this.state.section)){
             Alert.alert('Status','Invalid section!');
           }
           
            else{
              addClass(this.state.classcode, this.state.classname, this.state.section, this.state.matricnum);
-             addClassreff(this.state.classcode, this.state.section, this.state.matricnum);
+             addClassreff(this.state.classcode, this.state.section, this.state.matricnum, this.state.name);
+             addClassStudent(this.state.classcode, this.state.section,this.state.name);
              Alert.alert('Status','Inserted!');
            }
         } else{
@@ -260,15 +289,7 @@ export default class CreateClass2 extends Component{
                 
                 />
 
-            <TextInput style={styles.inputBox} 
-                placeholderTextColor="#595959"              
-                
-                underlineColorAndroid='rgba(0,0,0,0)'
-                placeholder="Matric Number" 
-                color='black'
-                onChangeText={this.setMatricnum}
-                
-                /> 
+           
            
             <TouchableOpacity style={styles.button} onPress={this.saveData}>
             <Text style={styles.loginbutton}>create</Text>

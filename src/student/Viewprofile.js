@@ -44,7 +44,7 @@ export default class Viewprofile extends Component {
             this.setState({Students: firebaseData},()=>{
               this.state.Students.map((element) => {
                 this.setState({
-                  fname: element.fname,
+                  name: element.name,
                   lname : element.lname,
                   matricnum: element.matricnum,
                   course: element.course,
@@ -60,7 +60,7 @@ export default class Viewprofile extends Component {
   }
 
   setName = (value) =>{
-    this.setState({ fname: value });
+    this.setState({ name: value });
   }
 
   setMatricNo = (value) =>{
@@ -68,19 +68,6 @@ export default class Viewprofile extends Component {
   }
 
   
-
-//   updateData = () =>{
-//     if(this.state.name && this.state.matricno && this.state.major && this.state.year && this.state.status){
-//       if(isNaN(this.state.matricno)){
-//         Alert.alert('Status','Invalid Matric No!');
-//       }
-//        else{
-//          updateStudent(this.state.name, this.state.matricno, this.state.major, this.state.year, this.state.status);
-//        }
-//     } else{
-//        Alert.alert('Status','Empty Field(s)!');
-//     }
-//   }
 
   render() {
     return (
@@ -106,7 +93,7 @@ export default class Viewprofile extends Component {
       <View >
         <View style={{marginTop:'22%'}}>
             <Text style={{color:'black', alignSelf:'center', fontSize:20}}>
-            {this.state.fname}
+            {this.state.name}
             </Text>
             <Text style={{color:'black', alignSelf:'center', fontSize:20}}>
             {this.state.lname}

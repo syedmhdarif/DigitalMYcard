@@ -4,7 +4,8 @@ import auth from '@react-native-firebase/auth';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import MyClass2 from './MyClass2';
+
+import ClassList from './ClassList'; //MyclassList
 
 function MyClass ({navigation}){
     
@@ -16,7 +17,8 @@ function MyClass ({navigation}){
                 <Text style={{fontSize:20, fontWeight:'bold', color:'#ffffff', marginHorizontal:15}}>Digital Matric</Text>
             </TouchableOpacity>
                 <ScrollView >
-                    <MyClass2/>
+                
+                    <ClassList/> 
                 </ScrollView>
 
                 
