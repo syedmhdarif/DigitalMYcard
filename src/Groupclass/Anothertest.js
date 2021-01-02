@@ -8,45 +8,40 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-export default function Testpage ({Students}){
+export default function Anothertest ({Students}){
 
    const [handleToggle,setHandleToggle] = useState(false);
 
    const navigation = useNavigation();
 
-    function navigateToList() {
-        navigation.navigate('Info4993', Students);
-    }
-    function navigateToList2() {
-        navigation.navigate('StudentView');
-    }
+    // function navigateToList() {
+    //     navigation.navigate('Info4993', Students);
+    // }
+    // function navigateToList2() {
+    //     navigation.navigate('StudentView');
+    // }
 
 
 
 
     return(
-        
-        <TouchableOpacity 
-        onPress= {()=>navigateToList()}>
-           
-            <View style={styles.textedit} >
-                <View   style={{flexDirection:'column'}}>
-                <Text style={{fontSize:18, color:'#595959'}}>{Students.classname}</Text>
-                <Text style={{fontSize:18, color:'#595959'}}>{Students.classcode} - Section {Students.section}</Text>
-                
-                </View>
+       
+        <View style={styles.textedit} >
+            <View   style={{flexDirection:'column'}}>
+          
+              
+              <Text style={{fontSize:18, color:'#595959'}}>{Students.classcode}</Text>
             
-                <Right>
-
-                <Icon color='#595959' name="arrow-forward" />
-                </Right>
-                
-                
             </View>
+           
+            <Right>
+
+            <Icon color='#595959' name="arrow-forward" />
+            </Right>
+              
             
-          </TouchableOpacity>
+          </View>
          
-  
     );
         
 
@@ -55,7 +50,7 @@ export default function Testpage ({Students}){
 const styles = StyleSheet.create({
     classtext:{
         
-        
+        justifyContent: 'flex-start',
         alignItems: 'center',
         backgroundColor: "#ffffff",
     },

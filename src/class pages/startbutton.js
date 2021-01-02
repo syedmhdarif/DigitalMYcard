@@ -5,8 +5,8 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 const Startbutton = () => {
   const createTwoButtonAlert = () =>
     Alert.alert(
-      "Recoding!",
-      "INFO4993",
+      "Group joined!",
+      "Group 1",
       [
         {
           text: "Cancel",
@@ -23,7 +23,7 @@ const Startbutton = () => {
     <View style={styles.container}>
     <TouchableOpacity style={styles.button}
              onPress={createTwoButtonAlert}>
-                <Text style={styles.loginbutton}>Start</Text>
+                <Text style={styles.loginbutton}>Join Group</Text>
             </TouchableOpacity>
     </View>
   );

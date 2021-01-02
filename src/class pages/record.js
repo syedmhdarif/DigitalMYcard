@@ -6,6 +6,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp,
 
 import Startbutton from './startbutton';
 import Scanbutton from './Scanbutton';
+import Joingroup from '../Groupclass/Joingroup';
 
 export default class Record extends Component{
 
@@ -27,17 +28,8 @@ export default class Record extends Component{
                 {{fontSize:25, fontWeight:'300', marginVertical:20, color:'#666666'}}>
                     Start Class
             </Text>
-            <Image
-                    style={{ width:wp('30%'), height:hp('20%')}}
-                    source={require('../images/QR.png')}/>
+            <Joingroup/>
             
-            <TextInput style={styles.inputBox} 
-                placeholderTextColor="#595959"
-                underlineColorAndroid='rgba(0,0,0,0)'
-                placeholder="Date"
-                
-                 />
-            <Startbutton/>
             
             </View>
             </ScrollView>

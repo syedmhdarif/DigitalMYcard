@@ -61,6 +61,7 @@ import ListScreen from './src/pages/ListScreen';
 import Matric from './src/pages/Matric';
 import MatricCard from './src/pages/MatricCard';
 import Newdataservice from './src/services/Newdataservice';
+import Anothertest from './src/Groupclass/Anothertest';
 
 import ClassList from './src/pages/ClassList';
 
@@ -116,6 +117,7 @@ function App() {
         <Stack.Screen name="MatricCard" component={MatricCard} />
         <Stack.Screen name="Newdataservice" component={Newdataservice} />
         <Stack.Screen name="ClassList" component={ClassList} />
+        <Stack.Screen name="Anothertest" component={Anothertest} />
       </Stack.Navigator>
 
       {/* <Router>

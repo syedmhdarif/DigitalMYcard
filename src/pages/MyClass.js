@@ -4,6 +4,8 @@ import auth from '@react-native-firebase/auth';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import MyClass2 from './MyClass2';
+
 
 import ClassList from './ClassList'; //MyclassList
 

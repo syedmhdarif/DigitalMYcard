@@ -5,6 +5,8 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp, marginHorizontal 
 // import Icon from 'react-native-vector-icons/Ionicons';
 import { Text, ListItem, Left, Right, Icon, View } from 'native-base';
 import PropTypes from 'prop-types';
+import QRCode from 'react-native-qrcode-svg';
+
 
 export default class MatricCard extends Component {
 
@@ -18,6 +20,13 @@ export default class MatricCard extends Component {
     return(
         
       this.props.Studentss.map((data, index) => {
+
+        var segs = [
+          { data: 'Name : '},
+          { data: data.name},
+          { data: ' Matric Number : '},
+          { data: data.matricnum, }
+        ]
         return(
           
            <View>
@@ -47,9 +56,18 @@ export default class MatricCard extends Component {
                         <Text style={styles.textedit}>{data.course}</Text>
                     </View>
 
-                <Image                 
+                    <View style={{marginTop:'5%'}}>
+                    <QRCode
+                      value={segs}
+                      size={90}
+                      style={{marginVertical:10}}
+                    />
+                    </View>
+   
+
+                {/* <Image                 
                     style={{ marginTop:'5%',width:wp('31%'), height:hp('19%')}}
-                    source={{uri :data.qrimage}}/>
+                    source={{uri :data.qrimage}}/>  */}
                 <Text style={styles.textedit2}>17.07.2020  03.29pm</Text>
          
                 <TouchableOpacity style={{marginVertical:'2%'}} onPress={()=> auth().signOut()} >
@@ -101,7 +119,8 @@ const styles = StyleSheet.create({
       color:'black', fontSize:17
   
     },
-    textedit2:{    
+    textedit2:{   
+      marginTop:5, 
       fontWeight:'bold',
       color:'black', fontSize:14
   

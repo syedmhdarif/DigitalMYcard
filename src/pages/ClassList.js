@@ -14,14 +14,14 @@ var user = auth().currentUser;
 const ClassList = ()=>{
     const [getstudent3, setgetstudent3] = useState();
 
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
 
-    function navigateToList() {
-        navigation.navigate('Info4993');
-    }
-    function navigateToList2() {
-        navigation.navigate('StudentView');
-    }
+    // function navigateToList() {
+    //     navigation.navigate('Info4993');
+    // }
+    // function navigateToList2() {
+    //     navigation.navigate('StudentView');
+    // }
 
 
     useEffect(() => {
@@ -45,20 +45,26 @@ const ClassList = ()=>{
             
         
                
-            <View style={styles.classtext}>
+            <View >
             <Text style={{
                 textAlign:'center', fontWeight:'300', fontSize:25, color:'#595959', marginVertical:10}}>
                 My Class List
             </Text>
        
-            <TouchableOpacity 
-                    onPress= {()=>navigateToList()}>
-            <View>
+           
+            <View style={styles.classtext}>
+            
+              <Text  >
                 {getstudent3 
-                            ? getstudent3.map((Students, index) => <Testpage Students={Students} key={index}/>)
+                            ? getstudent3.map((Students, index) => 
+                            <Testpage Students={Students} key={index}/>)
                         : ''}
+             </Text>        
+             
+                        
             </View>
-            </TouchableOpacity>
+            
+            
                        
                 </View>
          
@@ -75,8 +81,9 @@ export default ClassList;
 const styles = StyleSheet.create({
     classtext:{
         
-        justifyContent: 'flex-start',
-        alignItems: 'center',
+        marginHorizontal:10
+        
+       
         
     },
     textedit:{ 

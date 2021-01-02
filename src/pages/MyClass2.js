@@ -59,18 +59,17 @@ export default class MyClass2 extends Component {
         <Text style={{textAlign:'center', fontWeight:'300', fontSize:25, color:'#595959'}}>My Class List</Text>
         <List vertical={true}>
         
-        <TouchableOpacity
-         >
+       
           <StudentList Students={this.state.Students}
+          onPress={(classcode) => {Actions.Info4993({classcode: classcode});}}
           
           />
-        </TouchableOpacity>
-        
-         
+       
+      
         </List>
         
         {/* <Text>{this.props.classcode}</Text> */}
-        <ClassList/>
+        
         </View>
   
        

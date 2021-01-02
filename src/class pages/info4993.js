@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput, View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Chapter from './chapter';
@@ -35,10 +36,12 @@ const Info4993=()=> {
             />
             <Tab.Screen name="Record" component={Record} 
                 options={{
-              tabBarLabel: 'Record',
+              tabBarLabel: 'Group',
               tabBarIcon: ({ color, size }) => (
-             <Icon name="radio-button-on" color={color} size={20} />),}}
+             <Icon name="people" color={color} size={20} />),}}
             />
+
+
         </Tab.Navigator>
         
     )
