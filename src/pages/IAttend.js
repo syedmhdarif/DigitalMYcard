@@ -29,12 +29,12 @@ const IAttend=()=> {
              <MaterialCommunityIcons name="home" color={color} size={20} />
                 ),}}     
             />
-            <Tab.Screen name="Create Class" component={CreateClass} 
+            {/* <Tab.Screen name="Create Class" component={CreateClass} 
                 options={{
               tabBarLabel: 'Create Class',
               tabBarIcon: ({ color, size }) => (
              <Icon name="newspaper" color={color} size={20} />),}}
-            />
+            /> */}
             <Tab.Screen name="Join Class" component={JoinClass} 
                 options={{
               tabBarLabel: 'Join Class',

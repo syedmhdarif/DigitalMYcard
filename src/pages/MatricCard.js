@@ -13,7 +13,7 @@ export default class MatricCard extends Component {
   static propTypes = {
       Studentss: PropTypes.array.isRequired
   };
-
+ 
 
 
   render() {

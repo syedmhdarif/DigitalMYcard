@@ -1,26 +1,69 @@
-import React, { Component } from 'react';
+import React, { Component,  useState, useEffect  } from 'react';
 import { TextInput, View, ScrollView, Text, StyleSheet, TouchableOpacity,color} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 import MyClass2 from './MyClass2';
 
 
+
+
 import ClassList from './ClassList'; //MyclassList
+import { db } from '../config/db';
 
 function MyClass ({navigation}){
+
+    const [myClassList, setmyClassList] = useState();
+    
+    
+
+    var user = auth().currentUser;
+    useEffect(() => {
+        const myClassRef = db.ref( 'Students/'+ user.uid + '/Class');
+        myClassRef.on("value",(snapshot) => {
+            const myClassF = snapshot.val();
+            console.log(snapshot);
+            const myClassList=[];
+            for (let id in myClassF){
+                myClassList.push(myClassF[id]);
+               
+            }
+            setmyClassList(myClassList);
+            console.log(myClassList)
+
+        });
+    },[]);
+
+
     
         return(
             
-            <View style={{flex:1,}}>
+            <View style={{flex:1, backgroundColor:'#ffffff'}}>
             <TouchableOpacity style={styles.header} onPress={() => navigation.openDrawer()}>
             <Icon name="reorder-four-outline" color={'#ffffff'} size={20} />
                 <Text style={{fontSize:20, fontWeight:'bold', color:'#ffffff', marginHorizontal:15}}>Digital Matric</Text>
             </TouchableOpacity>
-                <ScrollView >
+                <ScrollView > 
                 
-                    <ClassList/> 
+                <View style={{alignItems:'center'}}>
+                <View>
+                    <Text style={{textAlign:'center',
+                        fontWeight:'300', fontSize:25, color:'#595959', marginVertical:10}}>
+                        My Class List 
+                    </Text>
+                </View>
+                <View style={{marginHorizontal:10}}>
+                <Text>
+                    {myClassList 
+                    ? myClassList.map((Class, index) => <ClassList Class={Class} key={index} 
+                       
+                    />)
+                    : ''}
+                </Text> 
+                </View>
+                </View>
                 </ScrollView>
 
                 

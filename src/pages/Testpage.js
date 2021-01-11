@@ -12,11 +12,15 @@ export default function Testpage ({Students}){
 
    const [handleToggle,setHandleToggle] = useState(false);
 
+    
+
    const navigation = useNavigation();
 
     function navigateToList() {
-        navigation.navigate('Info4993', Students);
-    }
+      navigation.navigate('Anothertest', {  
+        itemId: Students.classcode,  
+        otherParam: Students.section,  
+    })  }
     function navigateToList2() {
         navigation.navigate('StudentView');
     }

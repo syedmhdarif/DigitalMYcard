@@ -14,6 +14,17 @@ export default class StudentList extends Component {
 
 
   render() {
+
+    // const { navigate } = this.props.navigation;
+    // function navigateToList() {
+    //   this.props.navigation.navigate('Anothertest', {  
+    //     userName: Students.classcode,  
+    //     otherParam: '101',  
+    // })  }
+    // function navigateToList2() {
+    //     navigation.navigate('StudentView');
+    // }
+
     return(
       this.props.Students.map((data, index) => {
         return(
@@ -27,8 +38,11 @@ export default class StudentList extends Component {
             </View>
            
             <Right>
-
+            <TouchableOpacity
+             onPress= {()=>navigateToList()} 
+              >
             <Icon color='#595959' name="arrow-forward" />
+            </TouchableOpacity>
             </Right>
               
             

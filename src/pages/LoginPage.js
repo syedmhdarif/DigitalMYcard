@@ -11,7 +11,7 @@ export default class LoginPage extends Component{
   state={
     loggedIn:null
   }
-
+ 
   componentDidMount(){
  
       auth().onAuthStateChanged(user => {

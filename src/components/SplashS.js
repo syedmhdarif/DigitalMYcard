@@ -12,6 +12,7 @@ import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useTheme } from '@react-navigation/native';
+import { Actions } from 'react-native-router-flux';
 
 const SplashS = ({navigation}) => {
     const { colors } = useTheme();
@@ -26,7 +27,7 @@ const SplashS = ({navigation}) => {
             source={require('../images/logo4.png')}
             style={styles.logo}
             resizeMode="stretch"
-            />
+            /> 
         </View>
         <Animatable.View 
             style={[styles.footer, {

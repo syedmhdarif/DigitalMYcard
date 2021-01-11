@@ -44,6 +44,8 @@ export default class MyClass2 extends Component {
 
   render() {
 
+    
+
     // const navigation = useNavigation();
 
     // function navigateToList() {
@@ -61,7 +63,7 @@ export default class MyClass2 extends Component {
         
        
           <StudentList Students={this.state.Students}
-          onPress={(classcode) => {Actions.Info4993({classcode: classcode});}}
+           
           
           />
        

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {
   AppRegistry,
-  StyleSheet,
+  StyleSheet, 
   Text,
   TouchableOpacity,
   Linking, Alert
@@ -14,9 +14,9 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 export default class Qrscanner extends Component{
 
   IfScaned = e =>{
-    Linking.openURL(e.data).catch(err=>Alert.alert("Invalid QR code", e.data));
+    Linking.openURL(e.data).catch(err=>Alert.alert("QR code", e.data));
   }
-
+  
   render(){
     return(
       <QRCodeScanner

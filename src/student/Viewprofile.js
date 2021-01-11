@@ -23,6 +23,7 @@ var user = auth().currentUser;
 
 
 
+
 let studentsRef = db.ref('/Students/' + user.uid+  '/Profile');
 
 export default class Viewprofile extends Component {
@@ -104,10 +105,13 @@ export default class Viewprofile extends Component {
             <Text style={{color:'black', alignSelf:'center', fontSize:19}}>
             {this.state.course}
             </Text>
+            <Text style={{color:'black', alignSelf:'center', fontSize:19}}>
+            {user.email}
+            </Text>
 
         </View>
         
-            <Text style={{textAlign:'center'}}>this is the end</Text>
+            <Text style={{textAlign:'center'}}></Text>
         </View>
         
         </Animatable.View>

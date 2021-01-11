@@ -94,7 +94,7 @@ export default class JoinClass2 extends Component{
         this.setState({ matricnum: value });
       }
 
-   
+    
 
 
     saveData = () =>{

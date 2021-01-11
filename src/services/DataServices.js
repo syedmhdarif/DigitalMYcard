@@ -62,6 +62,27 @@ export const addClassStudent =  (classcode, section, name) => {
     
 }
 
+export const JoinGroup =  (classcode, section, name, matricnum) => {
+    db.ref('/Classreff/'+ classcode + '_' + section +'/group/participantlist').child(matricnum).set({
+        name: name,
+        matricnum : matricnum
+        
+        
+        // year : year,
+        // semester : semester ,
+    }).then(() => {
+        console.log('INSERTED !');
+    }).catch((error) => {
+        console.log(error);
+    });
+    
+}
+
+export const removeClass =  (classcode, section) => {
+    db.ref('/Students/' + user.uid + '/Class/' ).child(classcode+'_'+section).remove();
+    Actions.ListScreen();
+}
+
 
 // export const addNewstudent =  (classname, classcode, section) => {
 //     db.ref('/Class/classcode/studentlist').child(classcode).child(studentlist).update({

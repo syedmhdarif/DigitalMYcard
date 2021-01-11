@@ -28,12 +28,14 @@ const Info4993=()=> {
              <Icon name="reader" color={color} size={20} />
                 ),}}     
             />
-            <Tab.Screen name="Student" component={Student} 
+          
+            {/* <Tab.Screen name="Student" component={Student} 
                 options={{
               tabBarLabel: 'Student',
               tabBarIcon: ({ color, size }) => (
              <Icon name="man" color={color} size={20} />),}}
-            />
+            /> */}
+
             <Tab.Screen name="Record" component={Record} 
                 options={{
               tabBarLabel: 'Group',
