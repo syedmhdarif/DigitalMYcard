@@ -31,9 +31,12 @@ export const addClassreff =  (classcode ,section, matricnum, name) => {
     
     db.ref('/Classreff/'+ classcode + '_' + section +'/studentlist/').child(matricnum).set({
 
-
+        classcode : classcode,
+        section : section,
         matricnum:matricnum,
-        name : name,
+        name : name,      
+        status : 'ABSENT',
+
         // year : year,
         // semester : semester ,
     }).then(() => {
@@ -65,13 +68,40 @@ export const addClassStudent =  (classcode, section, name) => {
 export const JoinGroup =  (classcode, section, name, matricnum) => {
     db.ref('/Classreff/'+ classcode + '_' + section +'/group/participantlist').child(matricnum).set({
         name: name,
-        matricnum : matricnum
+        matricnum : matricnum,
         
         
         // year : year,
         // semester : semester ,
     }).then(() => {
         console.log('INSERTED !');
+    }).catch((error) => {
+        console.log(error);
+    });
+    
+}
+
+export const Attendclass =  (classcode, section, day, month, year, matricnum, name) => {
+    db.ref('/Classreff/' + classcode + '_'+ section + '/Attendance/' + 
+    day + '_' + month + '_'+ year + '/member/' + matricnum).set({
+        classcode,
+        section : section,
+        matricnum: matricnum,
+        name : name,
+        status: 'PRESENT',
+        
+        
+        
+        // year : year,
+        // semester : semester ,
+    }).then(() => {
+        console.log('INSERTED !');
+        console.log(classcode);
+        console.log(section);
+        console.log(day);
+        console.log(month);
+        console.log(year);
+        console.log(matricnum);
     }).catch((error) => {
         console.log(error);
     });

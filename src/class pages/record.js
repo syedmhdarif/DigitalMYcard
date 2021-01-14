@@ -20,7 +20,7 @@ const Record = ({route}) =>{
 
     var user = auth().currentUser;
     useEffect(() => {
-        const myClassRef = db.ref( 'Classreff/' + itemId + '_' + otherParam +'/group');
+        const myClassRef = db.ref( 'Classreff/' + itemId + '_' + otherParam +'/Group');
         myClassRef.on("value",(snapshot) => {
             const myClassF = snapshot.val();
             console.log(snapshot);

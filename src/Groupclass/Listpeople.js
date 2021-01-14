@@ -6,6 +6,7 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import { db } from '../config/db'
+import Joingroupbutton from './Joingroupbutton';
 
 
 var user = auth().currentUser;
@@ -16,72 +17,25 @@ var user = auth().currentUser;
 
 export default function Listpeople ({Class}){
   
-
-   const [handleToggle,setHandleToggle] = useState(false);
    const [getname3,setgetname3] = useState('');
+  //  const [classcode, setClassCode] = useState('');
+  //  const [section, setSection] = useState(''); 
+  //  const [gname, setGname] = useState('');
+  //  const [matricnum, setMatricNum] = useState('');
+  //  const [name, setName] = useState('');
 
-   const createTwoButtonAlert = () =>
-    Alert.alert(
-      "Group joined!",
-      "Inserted" , 
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ],
-      { cancelable: false }
-    );
+   useEffect(() =>{
+    const getName = db.ref('Students/'+ user.uid + '/profile');
+    getName.once("value",(snapshot) =>{
+
+        
+        setgetname3(snapshot.val());
+        
+        
+    });console.log(getname3);
+},[]);
 
 
-    const createTwoButtonAlert2 = () =>
-    Alert.alert(
-      "Group joined!",
-      "Group 2",
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ],
-      { cancelable: false }
-    );
-
-    const createTwoButtonAlert3 = () =>
-    Alert.alert(
-      "Group joined!",
-      "Group 3",
-     
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ],
-      { cancelable: false }
-    );
-
-    
-    useEffect(() => {
-      const myClassRef = db.ref( 'Students/'+user.uid + '/Profile');
-      myClassRef.on("value",(snapshot) => {
-          const myClassF = snapshot.val();
-          console.log(snapshot);
-          const getname3=[];
-          for (let id in myClassF){
-              getname3.push(myClassF[id]);
-             
-          }
-          setgetname3(getname3);
-
-      });console.log(getname3.matricnum);
-  },[]);
 
      
     return(
@@ -89,20 +43,13 @@ export default function Listpeople ({Class}){
        
            
             <View  >
-                <View style={styles.inputBox}>
-            
-                  <Text style={{fontSize:20, color:'#595959'}}>{Class.gname}{getname3.matricnum}</Text>
-                  <View style={styles.container}>
-                      <TouchableOpacity style={styles.button}
-                          onPress={createTwoButtonAlert}>
-                              <Text style={styles.loginbutton}>Join Group</Text>
-                      </TouchableOpacity>
-                  </View>
-              
-              </View>
-
-              
-                
+               <Joingroupbutton
+                 classcode = {Class.classcode}
+                 section = {Class.section}
+                 gname = {Class.gname}
+                 matricnum = {getname3.matricnum}
+                 name = {getname3.name}
+               />
                 
             </View>
             

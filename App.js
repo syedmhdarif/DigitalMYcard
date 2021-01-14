@@ -62,6 +62,7 @@ import Matric from './src/pages/Matric';
 import MatricCard from './src/pages/MatricCard';
 import Newdataservice from './src/services/Newdataservice';
 import Anothertest from './src/Groupclass/Anothertest';
+import Gmember from './src/Groupmember/Gmember';
 
 import ClassList from './src/pages/ClassList';
 
@@ -118,6 +119,7 @@ function App() {
         <Stack.Screen name="Newdataservice" component={Newdataservice} />
         <Stack.Screen name="ClassList" component={ClassList} />
         <Stack.Screen name="Anothertest" component={Anothertest} />
+        <Stack.Screen name="Gmember" component={Gmember} />
       </Stack.Navigator>
 
       {/* <Router>

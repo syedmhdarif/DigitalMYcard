@@ -21,7 +21,7 @@ function MyClass ({navigation}){
 
     var user = auth().currentUser;
     useEffect(() => {
-        const myClassRef = db.ref( 'Students/'+ user.uid + '/Class');
+        const myClassRef = db.ref( 'Students/'+ user.uid + '/Class'); 
         myClassRef.on("value",(snapshot) => {
             const myClassF = snapshot.val();
             console.log(snapshot);

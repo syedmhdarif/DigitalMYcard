@@ -29,7 +29,7 @@ const ClassList = ({Class})=>{
     const [handleToggle,setHandleToggle] = useState(false);
 
     useEffect(() =>{
-        const getName = db.ref('Students/'+ user.uid + '/Profile/' + Class.matricnum);
+        const getName = db.ref('Students/'+ user.uid + '/Class/'+ Class.classcode + '_' + Class.section );
         getName.once("value",(snapshot) =>{
     
             
@@ -65,8 +65,8 @@ const ClassList = ({Class})=>{
 
         function navigateToList() {
             navigation.navigate('Chapter', {  
-             itemId : Class.classcode,  
-             otherParam : Class.section,  
+             itemId : getname3.classcode,  
+             otherParam : getname3.section,  
         })  }
         function navigateToList2() {
             navigation.navigate('StudentView');

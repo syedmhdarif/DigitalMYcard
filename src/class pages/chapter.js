@@ -25,7 +25,7 @@ var user = auth().currentUser;
 
 export default function Chapter({route}){ 
     const [myClassList, setmyClassList] = useState();
-    const [liststatus, setmyliststatus] = useState();
+    const [liststatus, setmyliststatus] = useState('');
     const [getname3,setgetname3] = useState('');
 
     const { itemId, otherParam } = route.params;
@@ -41,11 +41,6 @@ export default function Chapter({route}){
             });
         }
 
-    const [state, setState] = React.useState({ open: false });
-
-    const onStateChange = ({ open }) => setState({ open });
-      
-    const { open } = state;
 
     useEffect(() =>{
         const getName = db.ref('Students/'+ user.uid + '/profile');
@@ -55,7 +50,9 @@ export default function Chapter({route}){
             setgetname3(snapshot.val());
             
             
-        });console.log(getname3);
+        });console.log(getname3.name);
+        console.log(getname3.matricnum);
+        console.log(getname3);
     },[]);
 
     
@@ -70,23 +67,12 @@ export default function Chapter({route}){
                
             }
             setmyClassList(myClassList);
-            console.log(myClassList)
+            console.log(myClassList);
+            console.log(itemId);
+            console.log(otherParam);
 
         });
     },[]);
-
-    useEffect(() =>{
-        const getNames = db.ref('Classreff/' + itemId + '_'+ otherParam+'/Attendance/' + getname3.matricnum);
-        getNames.once("value",(snapshot) =>{
-    
-            
-            setmyliststatus(snapshot.val());
-            
-            
-        });console.log(liststatus);
-    },[]);
-
-   
 
 
     // useEffect(() => {
@@ -129,17 +115,19 @@ export default function Chapter({route}){
             <Text>
                     {myClassList 
                     ? myClassList.map((Class, index) => <AllDatelist Class={Class} key={index} 
-                       
+                   
                     />)
                     : ''}
             </Text>
-            <Text>
+
+            <Text>  </Text>
+            {/* <Text>
                     {liststatus 
                     ? liststatus.map((Statuss, index) => <Statuspage Statuss={Statuss} key={index} 
                        
                     />)
                     : ''}
-            </Text>
+            </Text> */}
             </View> 
             
 
