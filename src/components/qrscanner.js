@@ -79,7 +79,7 @@ import {
   Text,
   TouchableOpacity,
   Linking, Alert, Dimensions, View,  
-  
+  Button,
   StatusBar,
 } from 'react-native';
 
@@ -89,6 +89,8 @@ import { db } from '../config/db';
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
 import {Attendclass} from '../services/DataServices';
+import {getDistance, getPreciseDistance} from 'geolib';
+
 
 var user = auth().currentUser;
 
@@ -111,8 +113,29 @@ export default class Qrscanner extends Component{
         year : null,
         matricnum : null,
         name : null,
+        latitudes : 0,
+        longitudes : 0,
+        
     };
 }
+
+state = {
+    location: null
+};
+
+findCoordinates = () => {
+    navigator.geolocation.getCurrentPosition(
+        position => {
+            const location = JSON.stringify(position);
+
+            this.setState({ location });
+        },
+        error => Alert.alert(error.message),
+        { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+};
+
+
 
 
 onSuccess = (e) => {
@@ -125,9 +148,13 @@ onSuccess = (e) => {
     var day = array[3];
     var month = array[4];
     var year = array[5];
+    var latitudes = array[6];
+    var longitudes = array[7];
     console.log(array);
     console.log(array[0]);
     console.log(year);
+    console.log(longitudes);
+    console.log(latitudes);
 
 
     console.log('scanned data' + check);
@@ -142,6 +169,8 @@ onSuccess = (e) => {
         day: day,
         month : month,
         year : year,
+        latitudes : latitudes,
+        longitudes : longitudes,
     })
     if (check === 'http') {
         Linking
@@ -161,7 +190,8 @@ onSuccess = (e) => {
             day: day,
             month : month,
             year : year,
-            
+            latitudes : latitudes,
+            longitudes : longitudes,
 
         })
     }
@@ -235,10 +265,28 @@ setMatricnum = (value) => {
 
 
 saveData = () =>{
-    const { scan, ScanResult, result, results, classcode, section, classname, day, month, year, matricnum, name} = this.state
+    const { scan, ScanResult, result, results, classcode, section, 
+        classname, day, month, year, matricnum, name, longitudes, latitudes} = this.state
 
-    Attendclass(classcode, section, day, month, year, matricnum, name);
-    Alert.alert('Status','Attended!');
+        var dis = getDistance(
+            {latitude: latitudes, longitude: longitudes},
+            {latitude: 3.2570119, longitude: 101.7399330},
+          );
+        var diss = dis/1000
+        //   alert(
+        //     `Distance\n\n${dis} Meter\nOR\n${dis / 1000} KM`
+        //   );
+   
+    if(diss <= 0.300){
+        Attendclass(classcode, section, day, month, year, matricnum, name);
+    Alert.alert('Status','Recorded Successfully !!');
+    console.log(diss);
+    }
+    else{
+             Alert.alert('Status','Out of range!!');
+          }
+    
+    
 //   if(this.state.classcode && this.state.section && this.state.day && this.state.month && this.state.year){
 //     if(isNaN(this.state.section)){
 //       Alert.alert('Status','Invalid section!');
@@ -256,24 +304,10 @@ saveData = () =>{
 //   }
 }
 
-// saveData = () =>{
-//   if(classcode && section && day && month && year){
-//     if(isNaN(section)){
-//       Alert.alert('Status','Invalid section!');
-//       console.log(month)
-//     }
-    
-//      else{  
-//       Attendclass(classcode && section && day && month && year);
-//       Alert.alert('Status','Attended!');
-//     }
-    
-//   } else{
-//      Alert.alert('Status','Empty Field(s)!');
-//   }
-// }
+
+
 render() {
-    const { scan, ScanResult, result, results, classcode, section, classname, day, month, year} = this.state
+    const { scan, ScanResult, result, results, classcode, section, classname, day, month, year, latitudes, longitudes} = this.state
     const desccription = 'The attendance report must be generated from the University system.'
     const desccription2 = 'When a student has been absent for twenty percent (20%) of lectures, the student should be informed that he / she will be barred from the registered course of the semester'
     const desccription3 = 'Based on the recommendation from the Kulliyyah, the DDAA Office will issue the barring letter to the student and a copy is sent to the HOD / Course Instructor / Finance Division / Parents and Student’s File'
@@ -286,12 +320,16 @@ render() {
                 <Text style={styles.textTitle}>Scan for Your Attendance! </Text>
                 {!scan && !ScanResult &&
                     <View style={styles.cardView} >
-                        <Text numberOfLines={8} style={styles.descText}>{desccription}</Text>
+                    <TouchableOpacity onPress={this.findCoordinates}>
+					
+					<Text>Location: {this.state.location} {latitudes}</Text>
+				</TouchableOpacity>
+                        <Text numberOfLines={8} style={styles.descText}>{desccription} </Text>
                         <Text numberOfLines={8} style={styles.descText}>{desccription2}</Text>
                         <Text numberOfLines={8} style={styles.descText}>{desccription3}</Text>
 
                         <TouchableOpacity onPress={this.activeQR} style={styles.buttonTouchable}>
-                            <Text style={styles.buttonTextStyle}>Click to Scan !</Text>
+                            <Text style={styles.buttonTextStyle}>Click to Scan ! </Text>
                         </TouchableOpacity>
 
                     </View>
@@ -301,12 +339,13 @@ render() {
                     <Fragment>
                         <Text style={styles.textTitle1}>Result !</Text>
                         <View style={ScanResult ? styles.scanCardView : styles.cardView}>
-                            <Text>Type : {result.type}</Text>
-                            <Text>Result : {result.data}</Text>
-                            <Text>Classcode : {classcode}</Text>
-                            <Text>Classname : {classname}</Text>
-                            <Text>Date : {day}/{month}/{year}</Text>
-                            <Text numberOfLines={1}>RawData: {result.rawData}</Text>
+                            
+                            <Text style={{textAlign:'center', marginBottom:10}}>Result : {result.data}</Text>
+                            <Text style={{fontSize:14}}>Classcode : {classcode} Classname : {classname} </Text>
+                            <Text style={{fontSize:14}}>({latitudes}, {longitudes})</Text>
+                            <Text style={{fontSize:14}}>Date : {day}/{month}/{year}</Text>
+                            
+                            {/* <Text numberOfLines={1}>RawData: {result.rawData}</Text> */}
                             <TouchableOpacity onPress={this.scanAgain} style={styles.buttonTouchable}>
                                 <Text style={styles.buttonTextStyle}>Click to Scan again!</Text>
                             </TouchableOpacity>
@@ -347,11 +386,11 @@ render() {
                    
                 }
                 
-                <View style={{alignItems:'center'}}>
+                {/* <View style={{alignItems:'center'}}>
                 <TouchableOpacity style={styles.buttonTouchable} onPress={() => this.setState({ scan: false })}>
                    <Text style={styles.textTitle}>Stop Scan</Text>
                 </TouchableOpacity>
-                </View>
+                </View> */}
             </Fragment>
         </View>
 
@@ -385,7 +424,7 @@ textTitle1: {
 },
 cardView: {
     width: deviceWidth - 32,
-    height: deviceHeight / 2,
+    height: deviceHeight / 1.5,
     alignSelf: 'center',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -430,7 +469,7 @@ buttonScan: {
 descText: {
     padding: 16,
     textAlign: 'justify',
-    fontSize: 16
+    fontSize: 14
 },
 
 

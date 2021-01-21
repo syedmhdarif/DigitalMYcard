@@ -80,7 +80,7 @@ export default class Viewprofile extends Component {
            
         <Image style={{marginTop:20,alignSelf:'center', 
             borderRadius:100,elevation:6, position:'absolute',
-             marginTop:'7%',width:wp('34%'), height:hp('19%')}}
+             marginTop:'7%',width:wp('34%'), height:hp('15%')}}
                 source={{uri :this.state.profileimg}}/>                
                 
         

@@ -177,6 +177,7 @@ const Joingroupbutton = (props)=>{
         gname,
         matricnum,
         name,
+        profileimg
 
     }= props;
 
@@ -187,7 +188,8 @@ const Joingroupbutton = (props)=>{
         const Joingroup = {
           
           name:name,
-          matricnum:matricnum
+          matricnum:matricnum,
+          profileimg : profileimg
         }
         classRef.set(Joingroup);
       
@@ -202,6 +204,7 @@ const Joingroupbutton = (props)=>{
          gname : gname,
          matricnum : matricnum,
          name : name,  
+         profileimg : profileimg
     })  }
 
     const createTwoButtonAlert = () =>

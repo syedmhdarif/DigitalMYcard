@@ -23,6 +23,7 @@
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
     "firebase": "^8.2.1",
+    "geolib": "^3.3.1",
     "native-base": "^2.13.15",
     "prop-types": "^15.7.2",
     "react": "16.13.1",

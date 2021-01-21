@@ -6,11 +6,16 @@ import PropTypes from 'prop-types';
 import { db } from '../config/db';
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
+
 import Statuspage2 from './Statuspage2';
 var user = auth().currentUser;
 
 
 const Statuspage = (props) => {
+
+    const [latitude, setLatitude] =useState('')
+    const [longitude, setLongitude] =useState('')
+  
   
     const{
         day,month,year,classcode,section,matricnum
@@ -131,7 +136,7 @@ const Statuspage = (props) => {
                      
                 </Text> */}
 
-                <Text style={{fontSize:15, paddingTop:4, marginLeft:160, color:'blue' , fontWeight: 'bold'}}>
+                <Text style={{fontSize:15, paddingTop:4, marginLeft:140, color:'blue' , fontWeight: 'bold'}}>
                 [{statuslist.status}] 
                      
                 </Text>

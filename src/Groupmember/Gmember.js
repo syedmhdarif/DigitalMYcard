@@ -11,7 +11,7 @@ import Gmember2 from './Gmember2';
 var user = auth().currentUser;
 
 const Gmember = ({route}) =>{
-    const { classcode, section, gname, matricnum, name} = route.params;
+    const { classcode, section, gname, matricnum, name, profileimg} = route.params;
     const [myClassList, setmyClassList] = useState();
 
     useEffect(() => {
@@ -31,8 +31,14 @@ const Gmember = ({route}) =>{
     },[]);
 
     return(
+        <View >
         <View>
-         <Text>
+            <Text style=
+                    {{fontSize:25, fontWeight:'300', marginVertical:20, color:'#666666', textAlign:'center'}}>
+                Group member
+            </Text>
+        </View>
+         <Text style={{textAlign:'center'}}>
                     {myClassList 
                     ? myClassList.map((Class, index) => <Gmember2 Class={Class} key={index} 
                        

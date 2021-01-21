@@ -49,6 +49,7 @@ export default function Listpeople ({Class}){
                  gname = {Class.gname}
                  matricnum = {getname3.matricnum}
                  name = {getname3.name}
+                 profileimg = {getname3.profileimg}
                />
                 
             </View>

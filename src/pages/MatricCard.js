@@ -13,10 +13,14 @@ export default class MatricCard extends Component {
   static propTypes = {
       Studentss: PropTypes.array.isRequired
   };
- 
-
 
   render() {
+    var date = new Date().getDate(); //Current Date
+    var month = new Date().getMonth() + 1; //Current Month
+    var year = new Date().getFullYear(); //Current Year
+    var hours = new Date().getHours(); //Current Hours
+    var min = new Date().getMinutes(); //Current Minutes
+    var sec = new Date().getSeconds(); //Current Seconds
     return(
         
       this.props.Studentss.map((data, index) => {
@@ -46,7 +50,7 @@ export default class MatricCard extends Component {
                 source={require('../images/matriccard.png')}>
 
                 <Image                 
-                    style={{ borderRadius:20, marginTop:100,width:wp('37%'), height:hp('23%')}}
+                    style={{ borderRadius:20, marginTop:115,width:wp('37.5%'), height:hp('18%')}}
                     source={{uri :data.profileimg}}/>
 
                     <View style={styles.textview}>
@@ -56,10 +60,10 @@ export default class MatricCard extends Component {
                         <Text style={styles.textedit}>{data.course}</Text>
                     </View>
 
-                    <View style={{marginTop:'5%'}}>
+                    <View style={{marginTop:'11%'}}>
                     <QRCode
                       value={segs}
-                      size={90}
+                      size={100}
                       style={{marginVertical:10}}
                     />
                     </View>
@@ -68,11 +72,13 @@ export default class MatricCard extends Component {
                 {/* <Image                 
                     style={{ marginTop:'5%',width:wp('31%'), height:hp('19%')}}
                     source={{uri :data.qrimage}}/>  */}
-                <Text style={styles.textedit2}>17.07.2020  03.29pm</Text>
+                <Text style={styles.textedit2}>{date}.{month}.{year}  {hours}.{min}.{sec}</Text>
          
                 <TouchableOpacity style={{marginVertical:'2%'}} onPress={()=> auth().signOut()} >
                      <Text style={{color:'black'}} >Logout</Text>
-               </TouchableOpacity></ImageBackground>
+               </TouchableOpacity>
+               
+               </ImageBackground>
                </View>
         </View>
           </View> 
@@ -96,8 +102,8 @@ const styles = StyleSheet.create({
     matric: {
       marginVertical:0,
       alignSelf:'center',
-      width:wp('89%'), 
-      height:hp('88%'),
+      width:wp('90%'), 
+      height:hp('69%'),
     
       elevation:4, 
       alignItems:'center',
